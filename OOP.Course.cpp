@@ -3,8 +3,9 @@
 using namespace std;
 
 class YoutubeChannel {
-public: 
+private: 
     string Name; string OwnerName; int SubscribersCount; list <string> PublishedVideoTitles;
+public:
     YoutubeChannel(string name, string ownerName){
         Name=name;
         OwnerName=ownerName;
@@ -20,11 +21,23 @@ public:
         cout<<VideoTitle<<endl;
     }
     }
+    void Subscribe(){
+        SubscribersCount++;
+    }
+    void Unsubscribe(){
+        if(SubscribersCount>0)
+            SubscribersCount--;
+        
+    }
+    void PublishVideo(string name){
+        PublishedVideoTitles.push_back(name);
+    }
 };
 
 int main(){
     YoutubeChannel ytChannel("PeluTV","Santiago H");
-    ytChannel.PublishedVideoTitles.push_back("Ivan el trolazo");
+    ytChannel.PublishVideo("Ivan el trolazo");
+    ytChannel.PublishVideo("Ricardo");
     ytChannel.GetInfo();
 
    
